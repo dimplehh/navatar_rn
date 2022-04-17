@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import { TouchableOpacity, Image, ScrollView, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar ,ActivityIndicator} from 'react-native';
 import {apoc, romanticcrown, kirsh, luvistrue, lee} from '../../../clothes_information.json';
 
-const GridView = ({ name, image, price}) => (
+const GridView = ({ name, image, price, AR}) => (
     <View style={styles.gridbox}>
     <Image source={{uri:image}} style={{width: 150, height: 150}}/>
       <Text style={styles.gridText}>{name}</Text>
-      <Text style={styles.gridText}>{price}</Text>
+      <Text style={styles.gridText2}>{price} ₩</Text>
     </View>
   );
 
@@ -22,13 +22,13 @@ const Index = () => {
                 <TouchableOpacity style={styles.touch} onPress={onPress1}><Text style={{textAlign: "center"}}>Top</Text></TouchableOpacity>
                 <TouchableOpacity style={styles.touch} onPress={onPress2}><Text style={{textAlign: "center"}}>Pants</Text></TouchableOpacity>
                 <TouchableOpacity style={styles.touch} onPress={onPress3}><Text style={{textAlign: "center"}}>Skirt</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.touch}><Text style={{textAlign: "center"}}>My button</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.touch}><Text style={{textAlign: "center"}}>My button</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touch}><Text style={{textAlign: "center"}}>Outer</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.touch}><Text style={{textAlign: "center"}}>Atc</Text></TouchableOpacity>
             </ScrollView>
           <FlatList numColumns={2}
             data={dataName}
             renderItem={({item})=><GridView name={item.name}
-            image={item.main_image} price={item.price}/>}
+            image={item.main_image} price={item.price} AR={item.AR}/>}
             keyExtractor={item => item.name}
           />
         </SafeAreaView>
@@ -51,6 +51,10 @@ const styles = StyleSheet.create({
       gridText: {
         fontSize: 15,
         color: 'black'
+      },
+      gridText2: {
+        fontSize: 15,
+        color: 'gray'
       },
       touch: {
         height: 50,
